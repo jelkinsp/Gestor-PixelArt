@@ -7,7 +7,7 @@ public class WindowMain {
     JFrame jFrame;
     JPanel[][] jPanels;
     JPanel jPLeft, jPRight;
-    JButton[][] jButtons;
+    ActionButton[][] jButtons;
 
     public WindowMain() {
         jFrame = new JFrame();
@@ -19,11 +19,11 @@ public class WindowMain {
     private void initializeComponents() {
         //Inicializar componentes
         jFrame.setLayout(new GridBagLayout());
-        jButtons = new JButton[4][4];
+        jButtons = new ActionButton[4][4];
         jPanels = new JPanel[4][4];
         for (int i = 0; i < jButtons.length; i++) {
             for (int j = 0; j < jButtons[i].length; j++) {
-                jButtons[i][j] = new JButton(i + "-" + j);
+                jButtons[i][j] = new ActionButton(i,j,jPanels[i][j]);
                 Font fontBold = new Font(jButtons[i][j].getFont().getName(),
                         Font.ITALIC,
                         jButtons[i][j].getFont().getSize());
@@ -90,7 +90,6 @@ public class WindowMain {
     private void initializeListeners() {
         for (int i = 0; i < jButtons.length; i++) {
             for (int j = 0; j < jButtons[i].length; j++) {
-//                jButtons[i][j].addActionListener(new ActionButton(i, j, jPanels[i][j]));
                 jButtons[i][j].addActionListener(new ActionButton(i, j, jPanels[i][j]));
             }
         }

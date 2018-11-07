@@ -18,6 +18,5 @@ public class ActionButton extends JButton implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
         this.jPanelAsociate.setBackground(color);
-
     }
 }
