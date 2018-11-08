@@ -2,6 +2,13 @@ import javax.swing.*;
 import javax.swing.border.*;
 import java.awt.*;
 
+/**
+ * Ventana principal.
+ * Crea un gestor de pixeles servido en jPanels, se controla haciendo click en los botones del panel derecho.
+ *
+ * @author : Jose Luis Luengo Ramos
+ *
+ */
 public class WindowMain {
 
     JFrame jFrame;
@@ -15,7 +22,21 @@ public class WindowMain {
         jFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     }
 
-
+    /**
+     * inicializa el programa.
+     *
+     */
+    public void initialize() {
+        jFrame.setVisible(true);
+        initializeComponents();
+        initializeListeners();
+    }
+    /**
+     * Inicializa los componentes, crea 2 paneles que contienen 2 matrices de paneles y botones.
+     * la matriz de paneles representa la pantalla de pixeles y los con los botones controlas que pixel pintas.
+     *
+     *
+     */
     private void initializeComponents() {
         //Inicializar componentes
         jFrame.setLayout(new GridBagLayout());
@@ -23,14 +44,11 @@ public class WindowMain {
         jPanels = new JPanel[4][4];
         for (int i = 0; i < jButtons.length; i++) {
             for (int j = 0; j < jButtons[i].length; j++) {
-                jButtons[i][j] = new ActionButton(i,j,jPanels[i][j]);
-                Font fontBold = new Font(jButtons[i][j].getFont().getName(),
-                        Font.ITALIC,
-                        jButtons[i][j].getFont().getSize());
-                jButtons[i][j].setFont(fontBold);
                 jPanels[i][j] = new JPanel();
                 jPanels[i][j].setLayout(new GridLayout());
                 jPanels[i][j].setBorder(new LineBorder(Color.BLACK));
+                jButtons[i][j] = new ActionButton(i,j,jPanels[i][j]);
+
             }
         }
         jPLeft = new JPanel();
@@ -87,6 +105,10 @@ public class WindowMain {
 
     }
 
+    /**
+     * Lanza los eventos
+     *
+     */
     private void initializeListeners() {
         for (int i = 0; i < jButtons.length; i++) {
             for (int j = 0; j < jButtons[i].length; j++) {
@@ -95,11 +117,6 @@ public class WindowMain {
         }
     }
 
-    public void initialize() {
-        jFrame.setVisible(true);
-        initializeComponents();
-        initializeListeners();
-    }
 
 
 }
