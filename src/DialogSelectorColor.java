@@ -20,15 +20,15 @@ public class DialogSelectorColor extends JDialog implements ActionListener, Chan
     JButton jBOK;
     JPanel jPanelColor;
     Color colorSelected;
-
     /**
      * Constructor inicia la ventana y hereda de JDialog
      *
+     * @param source
      */
-    public DialogSelectorColor() {
+    public DialogSelectorColor(JButton source) {
         super();
         setModal(true);
-        setBounds(0, 0, 400, 600);
+        super.setBounds((int)source.getLocationOnScreen().getX()-7,(int)source.getLocationOnScreen().getY(),250,400);
         addElements();
         addListeners();
     }
@@ -39,6 +39,7 @@ public class DialogSelectorColor extends JDialog implements ActionListener, Chan
      */
     public void addElements() {
         //Inicializao los slider
+
         sliderRed = new JSlider(JSlider.HORIZONTAL,0,255,0);
         sliderRed.setMajorTickSpacing(255);
         sliderRed.setMinorTickSpacing(0);
@@ -66,12 +67,14 @@ public class DialogSelectorColor extends JDialog implements ActionListener, Chan
 
         //Titulo
         GridBagConstraints setting = new GridBagConstraints();
+        setting.insets = new Insets(20,0,20,0);
         setting.gridheight =2;
         setting.fill = GridBagConstraints.HORIZONTAL;
         this.add(jLTitle, setting);
 
         //Niveles de Rojo
         setting = new GridBagConstraints();
+        setting.insets = new Insets(10,0,0,0);
         setting.gridy = 3;
         setting.fill = GridBagConstraints.HORIZONTAL;
         this.add(jLRed, setting);
@@ -82,6 +85,7 @@ public class DialogSelectorColor extends JDialog implements ActionListener, Chan
 
         //Niveles de Verde
         setting = new GridBagConstraints();
+        setting.insets = new Insets(10,0,0,0);
         setting.gridy = 5;
         setting.fill = GridBagConstraints.HORIZONTAL;
         this.add(jLBlue, setting);
@@ -92,6 +96,7 @@ public class DialogSelectorColor extends JDialog implements ActionListener, Chan
 
         //Niveles de Azul
         setting = new GridBagConstraints();
+        setting.insets = new Insets(10,0,0,0);
         setting.gridy = 7;
         setting.fill = GridBagConstraints.HORIZONTAL;
         this.add(jLGreen, setting);
@@ -102,15 +107,17 @@ public class DialogSelectorColor extends JDialog implements ActionListener, Chan
 
 
         setting = new GridBagConstraints();
-
+        setting.ipadx=5;
+        setting.ipady=20;
         setting.gridy = 9;
         setting.fill = GridBagConstraints.HORIZONTAL;
         jPanelColor.setBackground(Color.GRAY);
         jPanelColor.setBorder(new LineBorder(Color.BLACK));
         this.add(jPanelColor, setting);
-
+        setting.insets = new Insets(20,0,0,0);
         setting = new GridBagConstraints();
         setting.gridy= 10;
+
         this.add(jBOK, setting);
 
         jBOK.addActionListener(this);
@@ -122,7 +129,7 @@ public class DialogSelectorColor extends JDialog implements ActionListener, Chan
     /**
      * Retorna el color seleccionado
      *
-     * @return
+     * @return : retorna el color
      */
     public Color addListeners() {
         return colorSelected;

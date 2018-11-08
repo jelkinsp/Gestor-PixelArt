@@ -28,7 +28,7 @@ public class ActionButton extends JButton implements MouseListener, ActionListen
                 Font.ITALIC,
                 this.getFont().getSize());
         this.setFont(fontBold);
-        dialod = new DialogSelectorColor();
+
     }
 
 
@@ -41,7 +41,7 @@ public class ActionButton extends JButton implements MouseListener, ActionListen
     @Override
     public void mouseClicked(MouseEvent mouseEvent) {
         if(SwingUtilities.isRightMouseButton(mouseEvent)){
-
+        dialod = new DialogSelectorColor((JButton)mouseEvent.getSource());
             dialod.setVisible(true);
             color =dialod.addListeners();
         } else {
